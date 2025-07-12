@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rewear - Add Items</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+   
+    
+
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      
+    }
+     
+
+   
+  /* Header Styles */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 30px;
+}
+
+.logo {
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.home-btn {
+  text-decoration: none;
+  background: #ecf0f1;
+  color: #2c3e50;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background-color: #ddd;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+}
+
+/* Content Section */
+.content {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.add-image-box,
+.description-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1 1 400px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-image-box input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #999;
+  border-radius: 6px;
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+.description-heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.description-box textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.status-btn {
+  background-color: #2980b9;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.preview-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.preview-listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.preview-box {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-section {
+    flex-direction: column;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .top-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header class="top-header">
+    <a href="{{ url_for('landing') }}" class="logo">REWEAR</a>
+    <a href="{{ url_for('user_dashboard') }}" class="text-sm border border-gray-400 px-4 py-2 rounded hover:bg-gray-700">Home</a>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search for items..." />
+    <button>🔍</button>
+  </div>
+
+  <div class="content">
+    <form method="POST" action="{{ url_for('submit_item') }}" enctype="multipart/form-data">
+      <div class="form-section">
+        <!-- Image Upload -->
+        <div class="add-image-box enhanced-image-box">
+          <label for="image">Upload Product Image</label>
+          <input type="file" name="image" id="image" required />
+        </div>
+
+        <!-- Description -->
+        <div class="description-box">
+          <div class="description-heading">Add Product Description</div>
+          <input type="text" name="title" placeholder="Item Title" required style="width:100%; padding:10px; margin-bottom:10px;">
+          <textarea name="description" rows="4" placeholder="Description" required></textarea>
+          <input type="text" name="category" placeholder="Category" required style="width:100%; padding:10px; margin-bottom:10px;">
+          <input type="text" name="type" placeholder="Type" required style="width:100%; padding:10px; margin-bottom:10px;">
+          <input type="text" name="size" placeholder="Size" required style="width:100%; padding:10px; margin-bottom:10px;">
+          <input type="text" name="condition" placeholder="Condition" required style="width:100%; padding:10px; margin-bottom:10px;">
+          <input type="text" name="tags" placeholder="Tags (comma separated)" style="width:100%; padding:10px; margin-bottom:10px;">
+          <button type="submit" class="status-btn">Submit Item</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Previously listed items -->
+    <h3 class="preview-title">Previous Listings:</h3>
+    <div class="preview-listings">
+      {% for item in items %}
+        <div class="preview-box">
+          <img src="{{ item[9] }}" alt="Item Image">
+        </div>
+      {% else %}
+        <p>No listings found.</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

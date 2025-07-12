@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register • SW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f0e6;
+      display: flex;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 50%;
+      padding: 80px 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo-circle-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-image: url('your-logo.png'); /* Replace with actual image path */
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto 30px auto;
+    }
+
+    .profile-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #ccc;
+      background-image: url('static-profile.jpg'); /* Optional coder-added user image */
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto 25px auto;
+    }
+
+    .left-panel h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #ccc;
+      background-color: transparent;
+      border-radius: 7px;
+      font-size: 1rem;
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #111;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .right-panel {
+      width: 50%;
+      position: relative;
+      background: url('wallhaven-japan.jpg') no-repeat center center;
+      background-size: cover;
+      filter: brightness(0.98);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .right-panel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to right, rgba(245, 240, 230, 1) 0%, rgba(245, 240, 230, 0) 90%);
+      z-index: 2;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        padding: 40px 30px;
+      }
+
+      .right-panel {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <!-- Logo Image Circle -->
+      <div class="logo-circle-img"></div>
+
+      <!-- Static profile image (non-editable) -->
+      <div class="profile-img"></div>
+
+      <h1>Create Account</h1>
+
+      <form method="POST" action="/register">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" name="confirm_password" placeholder="Re-enter your password" required />
+        </div>
+
+        <button class="register-btn" type="submit">Register</button>
+      </form>
+    </div>
+
+    <div class="right-panel"></div>
+  </div>
+</body>
+</html>

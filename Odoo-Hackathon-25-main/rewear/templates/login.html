@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • SW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f0e6;
+      display: flex;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 50%;
+      padding: 80px 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-panel h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.0rem;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      margin-top: 15px;
+    }
+
+    .left-panel p {
+      margin-bottom: 40px;
+      color: #444;
+      font-size: 1.0rem;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    /* Hide default checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  /* padding: 10px 10px; */
+  top: 5px;
+  justify-content: center;
+  border: 2px solid #888;
+  border-radius: 50%;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Style when checked */
+input[type="checkbox"]:checked {
+  background-color: #BA1B1D;
+  border-color: #111;
+}
+
+/* Checkmark */
+input[type="checkbox"]:checked::after {
+  content: '\2713';  /* ✓ Unicode checkmark */
+  color: #333;
+  font-size: 20px;
+  position: absolute;
+  /* top: 0px; */
+  left: 3px;
+  bottom: 0px;
+}
+
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding:15px;
+      border: 2px solid #ccc;
+      background-color: transparent;
+      border-radius: 7px;
+      font-size: 1rem;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    .options label{
+        /* display: flex; */
+        align-items: center;
+        justify-content: space-around;
+        font-size: 0.9rem;
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .options a {
+      color: #333;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #111;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .signup-link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .signup-link a {
+      text-decoration: underline;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .right-panel {
+  width: 50%;
+  position: relative;
+  background: url('wallhaven-japan.jpg') no-repeat center center;
+  background-size: cover;
+  filter: brightness(0.98);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.right-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgba(245, 240, 230, 1) 0%, rgba(245, 240, 230, 0) 90%);
+  z-index: 2;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h1>Welcome back!</h1>
+      <p>Where the blossoms greet your return.</p>
+    <form action="{{ url_for('login') }}" method="POST">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+  </div>
+  <div class="options">
+    <label><input type="checkbox" class="checkbox"> Remember me</label>
+    <a href="#">Forgot password?</a>
+  </div>
+  <button class="login-btn" type="submit">Log in</button>
+  </form>
+
+      <div class="signup-link">
+        Don't have an account? <a href="{{ url_for('register') }}">Sign up</a>
+
+      </div>
+    </div>
+    <div class="right-panel"></div>
+  </div>
+</body>
+</html>

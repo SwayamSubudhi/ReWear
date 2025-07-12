@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-mono min-h-screen">
+  <!-- Header -->
+  <header class="flex justify-between items-center p-4 border-b border-gray-700 bg-gray-800">
+    <a href="{{ url_for('landing') }}" class="text-xl font-bold">ReWear</a>
+    <a href="{{ url_for('landing') }}" class="text-sm border border-gray-400 px-4 py-2 rounded hover:bg-gray-700">Home</a>
+  </header>
+
+  <!-- Navigation Buttons -->
+  <nav class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-gray-800 border-b border-gray-700">
+    <button class="w-full py-2 bg-gray-700 rounded hover:bg-gray-600">Manage Users</button>
+    <button class="w-full py-2 bg-gray-700 rounded hover:bg-gray-600">Manage Orders</button>
+    <button class="w-full py-2 bg-gray-700 rounded hover:bg-gray-600">Manage Listings</button>
+  </nav>
+
+  <!-- Welcome -->
+  <section class="p-4">
+    <h1 class="text-2xl font-semibold">Welcome Admin</h1>
+  </section>
+
+  <!-- Registered Users Table -->
+  <section class="p-4 overflow-auto">
+    <h2 class="text-xl font-semibold mb-2">All Registered Users</h2>
+    <table class="min-w-full bg-gray-800 text-white border border-gray-600">
+      <thead>
+        <tr>
+          <th class="border border-gray-600 p-2">ID</th>
+          <th class="border border-gray-600 p-2">Name</th>
+          <th class="border border-gray-600 p-2">Email</th>
+          <th class="border border-gray-600 p-2">Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr class="hover:bg-gray-700">
+          <td class="border border-gray-600 p-2">{{ user[0] }}</td>
+          <td class="border border-gray-600 p-2">{{ user[1] }}</td>
+          <td class="border border-gray-600 p-2">{{ user[2] }}</td>
+          <td class="border border-gray-600 p-2">{{ user[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Item Listings Table -->
+  <section class="p-4 overflow-auto">
+    <h2 class="text-xl font-semibold mb-2">All Item Listings</h2>
+    <table class="min-w-full bg-gray-800 text-white border border-gray-600">
+      <thead>
+        <tr>
+          <th class="border border-gray-600 p-2">ID</th>
+          <th class="border border-gray-600 p-2">User ID</th>
+          <th class="border border-gray-600 p-2">Title</th>
+          <th class="border border-gray-600 p-2">Category</th>
+          <th class="border border-gray-600 p-2">Size</th>
+          <th class="border border-gray-600 p-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr class="hover:bg-gray-700">
+          <td class="border border-gray-600 p-2">{{ item[0] }}</td>
+          <td class="border border-gray-600 p-2">{{ item[1] }}</td>
+          <td class="border border-gray-600 p-2">{{ item[2] }}</td>
+          <td class="border border-gray-600 p-2">{{ item[3] }}</td>
+          <td class="border border-gray-600 p-2">{{ item[4] }}</td>
+          <td class="border border-gray-600 p-2">{{ item[5] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Logout -->
+  <section class="p-4">
+    <a href="/logout" class="text-sm text-red-400 hover:underline">Logout</a>
+  </section>
+</body>
+</html>

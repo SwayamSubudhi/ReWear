@@ -1,0 +1,54 @@
+[
+    {
+      "id": "item-1",
+      "image": "https://i.pinimg.com/736x/50/72/31/507231f355805ba1ba95693eec59a497.jpg",
+      "points": 15,
+      "title": "Vintage Denim Jacket",
+      "brand": "Levi's",
+      "size": "M",
+      "condition": "Excellent",
+      "location": "Brooklyn, NY",
+      "rating": 24,
+      "isFavorite": false
+    },
+
+    {
+        "id": "item-2",
+        "image": "https://i.pinimg.com/1200x/bd/4d/36/bd4d36b4e4cb56771f1f99f0bf598e98.jpg",
+        "points": 15,
+        "title": "Vintage Denim Jacket",
+        "brand": "Levi's",
+        "size": "M",
+        "condition": "Excellent",
+        "location": "Brooklyn, NY",
+        "rating": 18,
+        "isFavorite": false
+      },
+
+      {
+        "id": "item-3",
+        "image": "https://i.pinimg.com/1200x/68/fc/a4/68fca438ce1dd7a2310deeb35d92a51e.jpg",
+        "points": 15,
+        "title": "Vintage Denim Jacket",
+        "brand": "Levi's",
+        "size": "M",
+        "condition": "Excellent",
+        "location": "Brooklyn, NY",
+        "rating": 31,
+        "isFavorite": false
+      },
+      
+      {
+        "id": "item-4",
+        "image": "https://i.pinimg.com/736x/7d/58/07/7d580703f271664094406b22d22d482e.jpg",
+        "points": 15,
+        "title": "Vintage Denim Jacket",
+        "brand": "Levi's",
+        "size": "M",
+        "condition": "Excellent",
+        "location": "Brooklyn, NY",
+        "rating": 42,
+        "isFavorite": false
+      } 
+]
+  
